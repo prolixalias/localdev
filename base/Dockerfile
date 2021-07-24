@@ -1,20 +1,20 @@
-# base localdev
+# localdev base
 
 FROM ubuntu:focal AS base
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_US.UTF-8
 RUN apt update && \
-    apt upgrade -y && \
-    apt install -y build-essential curl fish git htop jq less locales lsof man-db multitail nano ninja-build software-properties-common ssl-cert sudo time tmux unzip vim wget zip zsh zsh-autosuggestions && \
+    apt upgrade -qqy && \
+    apt install -qqy build-essential curl fish git htop jq less locales lsof man-db multitail nano ninja-build software-properties-common ssl-cert sudo time tmux tree unzip vim wget zip zsh zsh-autosuggestions && \
     locale-gen en_US.UTF-8 && \
     wget https://apt.puppet.com/puppet-tools-release-focal.deb && \
     wget https://apt.puppetlabs.com/puppet6-release-focal.deb && \
     dpkg -i puppet6-release-focal.deb && \
     dpkg -i puppet-tools-release-focal.deb && \
     apt update && \
-    apt install -y pdk puppet-agent puppet-bolt && \
-    rm -f puppet6-release-bionic.deb puppet-tools-release-bionic.deb && \
+    apt install -qqy pdk puppet-agent puppet-bolt && \
+    rm -f puppet6-release-focal.deb puppet-tools-release-focal.deb && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
     # '-l': see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
