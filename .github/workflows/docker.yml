@@ -57,8 +57,9 @@ jobs:
     strategy:
       matrix:
         children:
-          - 'terraform'
+          - 'puppet'
           - 'selenium-chrome'
+          - 'terraform'
     steps:
       - name: "Checkout source code at current commit"
         uses: actions/checkout@v2
