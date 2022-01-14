@@ -1,6 +1,6 @@
 # localdev base
 
-FROM ubuntu:jammy AS base
+FROM ubuntu:groovy AS base
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_US.UTF-8
