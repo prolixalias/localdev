@@ -58,7 +58,7 @@ jobs:
       matrix:
         children:
           - 'puppet'
-          - 'selenium-chrome'
+          - 'selenium-chromium'
           - 'terraform'
     steps:
       - name: "Checkout source code at current commit"

@@ -3,12 +3,11 @@
 FROM prolixalias/localdev:latest
 
 USER localdev
-RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && \
-    sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && \
-    sudo apt update -qqy && \
-    sudo apt upgrade -qqy && \
-    sudo apt install -qqy terraform && \
+ARG TERRAFORM_VERSION="1.1.3"
+RUN curl -O https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_$(dpkg --print-architecture).zip && \
+    sudo unzip terraform_${TERRAFORM_VERSION}_linux_$(dpkg --print-architecture).zip && \
+    sudo mv ~/terraform /usr/local/bin && \
+    rm -f ~/terraform_${TERRAFORM_VERSION}_linux_$(dpkg --print-architecture).zip && \
     sudo apt clean && \
-    sudo apt -qqy install  && \
     sudo rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 ENTRYPOINT /usr/bin/zsh
