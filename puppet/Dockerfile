@@ -1,9 +1,9 @@
 # localdev puppet
 
-FROM prolixalias/localdev:latest
+FROM prolixalias/localdev:v0.0.1a
 
 USER localdev
-ARG PUPPET_VERSION="1.1.3"
+ARG PUPPET_VERSION="7"
 RUN sudo wget https://apt.puppet.com/puppet-tools-release-focal.deb && \
     sudo dpkg -i puppet-tools-release-focal.deb && \
     sudo wget https://apt.puppet.com/puppet7-release-focal.deb && \
