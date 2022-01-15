@@ -1,6 +1,6 @@
 # localdev selenium chromium
 
-FROM prolixalias/localdev:v0.0.1d
+FROM prolixalias/localdev:v0.0.1e
 
 USER localdev
 RUN sudo apt update -qqy && \

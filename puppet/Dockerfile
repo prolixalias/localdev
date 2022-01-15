@@ -1,19 +1,19 @@
 # localdev puppet
 
-FROM prolixalias/localdev:v0.0.1d
+FROM prolixalias/localdev:v0.0.1e
 
 USER localdev
-ARG PUPPET_VERSION="7"
+ARG PUPPET_MAJOR_VERSION="7"
 RUN sudo wget https://apt.puppet.com/puppet-tools-release-focal.deb && \
     sudo dpkg -i puppet-tools-release-focal.deb && \
-    sudo wget https://apt.puppet.com/puppet7-release-focal.deb && \
-    sudo dpkg -i puppet7-release-focal.deb && \
+    sudo wget https://apt.puppet.com/puppet${PUPPET_MAJOR_VERSION}-release-focal.deb && \
+    sudo dpkg -i puppet${PUPPET_MAJOR_VERSION}-release-focal.deb && \
     sudo apt update && \
     sudo apt install -qqy pdk && \
     sudo apt install -qqy puppet-agent && \
     sudo apt install -qqy puppet-bolt && \
-    sudo rm -f puppet7-release-focal.deb && \
     sudo rm -f puppet-tools-release-focal.deb && \
+    sudo rm -f puppet${PUPPET_MAJOR_VERSION}-release-focal.deb && \
     sudo apt clean && \
     sudo rm -rf /var/lib/apt/lists/* && \
     sudo /opt/puppetlabs/puppet/bin/gem install puppet-debugger hub -N && \
