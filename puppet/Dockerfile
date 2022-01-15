@@ -5,13 +5,13 @@ FROM prolixalias/localdev:latest
 USER localdev
 ARG PUPPET_VERSION="1.1.3"
 RUN sudo wget https://apt.puppet.com/puppet-tools-release-focal.deb && \
-    #sudo dpkg -i puppet-tools-release-focal.deb && \
+    sudo dpkg -i puppet-tools-release-focal.deb && \
     sudo wget https://apt.puppet.com/puppet7-release-focal.deb && \
     sudo dpkg -i puppet7-release-focal.deb && \
     sudo apt update && \
-    # sudo apt install -qqy pdk && \
+    sudo apt install -qqy pdk && \
     sudo apt install -qqy puppet-agent && \
-    # sudo apt install -qqy puppet-bolt && \
+    sudo apt install -qqy puppet-bolt && \
     sudo rm -f puppet7-release-focal.deb && \
     sudo rm -f puppet-tools-release-focal.deb && \
     sudo apt clean && \
