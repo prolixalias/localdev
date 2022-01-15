@@ -1,6 +1,6 @@
 # localdev terraform
 
-FROM prolixalias/puppet:v0.0.1b
+FROM prolixalias/puppet:v0.0.1c
 
 USER localdev
 ARG TERRAFORM_VERSION="1.1.3"
