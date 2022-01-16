@@ -1,7 +1,6 @@
 #!/usr/bin/zsh
 
-sudo chown -R localdev:localdev ~/.aws ~/.ssh 
-sudo chown localdev:localdev ~/.zshrc
+sudo chown -R localdev:localdev ~
 
 if [[ ! -a ~/.local/share/chezmoi ]]; then
   sh -c "cd ~ && $(curl -fsLS https://raw.githubusercontent.com/prolixalias/chezmoi/main/assets/scripts/install.sh)" -- init --apply git@github.com:prolixalias/dotfiles.git
@@ -17,6 +16,7 @@ if [[ -a ~/.config/zsh/.zshrc ]]; then
   [[ -a ~/.zshrc ]] && rm -f ~/.zshrc
 fi
 
+### legacy homesick stuff below for reference
 # if [[ -x "$(command -v homesick)" ]]; then
 #   mkdir -p ~/.homesick/repos/
 #   cd ~/.homesick/repos

@@ -2,6 +2,11 @@
 # localdev
 ## Docker-based localdev environments
 
+### build (actions)
+push with a tag to build and deploy to hub.docker.com
+* tags with `v0.0.0x` format get built and pushed
+* tags with `v0.0.0` format get built, pushed and tagged `latest`
+
 ### build (manual)
 ```shell
 docker build -f base/Dockerfile -t prolixalias/localdev:latest -t prolixalias/localdev:v0.0.2 base/
