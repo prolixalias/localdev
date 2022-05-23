@@ -13,7 +13,9 @@ RUN apt update && \
     # '-l': see https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
     useradd -l -u 33333 -G sudo -md /home/localdev -s /bin/bash -p localdev localdev && \
     # passwordless 'sudo' group
-    sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers && \
+    # sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers && \
+    echo "localdev ALL=NOPASSWD:ALL" > /etc/sudoers.d/localdev && \
+    chmod 0440 /etc/sudoers.d/localdev && \
     usermod -s $(which zsh) localdev
 
 FROM base AS user

@@ -1,6 +1,6 @@
 # localdev puppet
 
-FROM prolixalias/localdev:v0.0.1f
+FROM prolixalias/localdev:v0.0.3c
 
 USER localdev
 ARG PUPPET_MAJOR_VERSION="7"
